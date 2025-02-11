@@ -1,0 +1,13 @@
+apiVersion: networking.terasky.labs/v1alpha1
+kind: VSphereHostPortGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: networking/v1alpha1/vspherehostportgroup
+  labels:
+    testing.upbound.io/example-name: pg
+  name: pg
+spec:
+  forProvider:
+    hostSystemId: ${data.vsphere_host.host.id}
+    name: portgroup-01
+    virtualSwitchName: ${vsphere_host_virtual_switch.host_virtual_switch.name}

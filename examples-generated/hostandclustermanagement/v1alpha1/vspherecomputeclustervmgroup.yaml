@@ -1,0 +1,39 @@
+apiVersion: hostandclustermanagement.terasky.labs/v1alpha1
+kind: VSphereComputeClusterVmGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostandclustermanagement/v1alpha1/vspherecomputeclustervmgroup
+  labels:
+    testing.upbound.io/example-name: cluster_vm_group
+  name: cluster-vm-group
+spec:
+  forProvider:
+    computeClusterId: ${data.vsphere_compute_cluster.cluster.id}
+    name: terraform-test-cluster-vm-group
+    virtualMachineIds:
+    - ${vsphere_virtual_machine.vm.*.id}
+
+---
+
+apiVersion: virtualmachine.terasky.labs/v1alpha1
+kind: VSphereVirtualMachine
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostandclustermanagement/v1alpha1/vspherecomputeclustervmgroup
+  labels:
+    testing.upbound.io/example-name: vm
+  name: vm
+spec:
+  forProvider:
+    count: 2
+    datastoreId: ${data.vsphere_datastore.datastore.id}
+    disk:
+    - label: disk0
+      size: 20
+    guestId: otherLinux64Guest
+    memory: 2048
+    name: terraform-test-${count.index}
+    networkInterface:
+    - networkId: ${data.vsphere_network.network.id}
+    numCpus: 2
+    resourcePoolId: ${data.vsphere_compute_cluster.cluster.resource_pool_id}

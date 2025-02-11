@@ -1,0 +1,37 @@
+apiVersion: hostandclustermanagement.terasky.labs/v1alpha1
+kind: VSphereHaVmOverride
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostandclustermanagement/v1alpha1/vspherehavmoverride
+  labels:
+    testing.upbound.io/example-name: ha_vm_override
+  name: ha-vm-override
+spec:
+  forProvider:
+    computeClusterId: ${data.vsphere_compute_cluster.cluster.id}
+    haVmRestartPriority: highest
+    virtualMachineId: ${vsphere_virtual_machine.vm.id}
+
+---
+
+apiVersion: virtualmachine.terasky.labs/v1alpha1
+kind: VSphereVirtualMachine
+metadata:
+  annotations:
+    meta.upbound.io/example-id: hostandclustermanagement/v1alpha1/vspherehavmoverride
+  labels:
+    testing.upbound.io/example-name: vm
+  name: vm
+spec:
+  forProvider:
+    datastoreId: ${data.vsphere_datastore.datastore.id}
+    disk:
+    - label: disk0
+      size: 20
+    guestId: otherLinux64Guest
+    memory: 2048
+    name: terraform-test
+    networkInterface:
+    - networkId: ${data.vsphere_network.network.id}
+    numCpus: 2
+    resourcePoolId: ${data.vsphere_compute_cluster.cluster.resource_pool_id}

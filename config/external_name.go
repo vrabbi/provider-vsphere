@@ -9,8 +9,58 @@ import "github.com/crossplane/upjet/pkg/config"
 // ExternalNameConfigs contains all external name configurations for this
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
-	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"null_resource": config.IdentifierFromProvider,
+	//Administration
+	"vsphere_license":                                 config.IdentifierFromProvider,
+	//Host and Cluster Management
+	"vsphere_compute_cluster":                         config.IdentifierFromProvider,
+	"vsphere_compute_cluster_host_group":              config.IdentifierFromProvider,
+	"vsphere_compute_cluster_vm_affinity_rule":        config.IdentifierFromProvider,
+	"vsphere_compute_cluster_vm_anti_affinity_rule":   config.IdentifierFromProvider,
+	"vsphere_compute_cluster_vm_dependency_rule":      config.IdentifierFromProvider,
+	"vsphere_compute_cluster_vm_group":                config.IdentifierFromProvider,
+	"vsphere_compute_cluster_vm_host_rule":            config.IdentifierFromProvider,
+	"vsphere_dpm_host_override":                       config.IdentifierFromProvider,
+	"vsphere_drs_vm_override":                         config.IdentifierFromProvider,
+	"vsphere_ha_vm_override":                          config.IdentifierFromProvider,
+	"vsphere_host":                                    config.IdentifierFromProvider,
+	"vsphere_resource_pool":                           config.IdentifierFromProvider,
+	"vsphere_vnic":                                    config.IdentifierFromProvider,
+	//Inventory
+	"vsphere_custom_attribute":                        config.IdentifierFromProvider,
+	"vsphere_datacenter":                              config.IdentifierFromProvider,
+	"vsphere_folder":                                  config.IdentifierFromProvider,
+	"vsphere_tag":                                     config.IdentifierFromProvider,
+	"vsphere_tag_category":                            config.IdentifierFromProvider,
+	//Lifecycle
+	"vsphere_offline_software_depot":				  config.IdentifierFromProvider,
+	//Networking
+	"vsphere_distributed_port_group":                  config.IdentifierFromProvider,
+	"vsphere_distributed_virtual_switch":              config.IdentifierFromProvider,
+	"vsphere_host_port_group":                         config.IdentifierFromProvider,
+	"vsphere_host_virtual_switch":                     config.IdentifierFromProvider,
+	//Security
+	"vsphere_entity_permissions":                      config.IdentifierFromProvider,
+	"vsphere_role":                                    config.IdentifierFromProvider,
+	//Storage
+	"vsphere_datastore_cluster":                       config.IdentifierFromProvider,
+	"vsphere_datastore_cluster_vm_anti_affinity_rule": config.IdentifierFromProvider,
+	"vsphere_file":                                    config.IdentifierFromProvider,
+	"vsphere_nas_datastore":                           config.IdentifierFromProvider,
+	"vsphere_storage_drs_vm_override":                 config.IdentifierFromProvider,
+	"vsphere_vm_storage_policy":                       config.IdentifierFromProvider,
+	"vsphere_vmfs_datastore":                          config.IdentifierFromProvider,
+	//Virtual Machine
+	"vsphere_content_library":                         config.IdentifierFromProvider,
+	"vsphere_content_library_item":                    config.IdentifierFromProvider,
+	"vsphere_vapp_container":                          config.IdentifierFromProvider,
+	"vsphere_vapp_entity":                             config.IdentifierFromProvider,
+	"vsphere_virtual_disk":                            config.IdentifierFromProvider,
+	"vsphere_virtual_machine":                         config.IdentifierFromProvider,
+	"vsphere_virtual_machine_snapshot":                config.IdentifierFromProvider,
+	"vsphere_guest_os_customization":                  config.IdentifierFromProvider,
+	//Workload Management
+	"vsphere_supervisor":                              config.IdentifierFromProvider,
+	"vsphere_virtual_machine_class":				   config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
